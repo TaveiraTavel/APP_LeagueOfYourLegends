@@ -6,30 +6,106 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/imgBackground"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:contentDescription="@string/"
+        android:contentDescription=""
+        android:scaleType="centerCrop"
+        android:scrollX="72dp"
+        android:src="@drawable/splashart_diana"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-
-        app:srcCompat="@drawable/ic_launcher_background"
-        android:scaleType="centerCrop"
-        android:scrollX="xxdp" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/"
+        android:id="@+id/imgAppLogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription=""
+        app:srcCompat="@drawable/applogo"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="xxxx"
+        android:layout_marginTop="78dp"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+    <TextView
+        android:id="@+id/textAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription=""
+        android:text="LEAGUE OF\nYOUR LEGENDS"
+        android:fontFamily="@font/alegreya_sans_sc"
+        android:letterSpacing=".1"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgAppLogo"
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/edtNickname"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:hint="NICKNAME"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textAppVersion"
+        android:layout_marginBottom="180dp"
+        android:backgroundTint="#C4B998"
+        android:textColorHint="#B9B9B9"
+        android:fontFamily="@font/alegreya_sans_sc"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinnerRegiao"
+        android:layout_width="115dp"
+        android:layout_height="50dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+
+        app:layout_constraintStart_toStartOf="@+id/edtNickname"
+        app:layout_constraintTop_toBottomOf="@id/edtNickname"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:contentDescription=""
+        android:backgroundTint="@color/marrom_botao"
+        android:fontFamily="@font/alata"
+        android:letterSpacing=".1"
+        android:text="ENTRAR"
+        android:textColor="@color/marrom_botao_texto"
+        android:textSize="18sp"
+        android:onClick="abrirPerfilActivity"
+
+        app:layout_constraintEnd_toEndOf="@+id/edtNickname"
+        app:layout_constraintStart_toStartOf="@+id/edtNickname"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRegiao" />
+
+    <TextView
+        android:id="@+id/textAppVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription=""
+        android:fontFamily="@font/alata"
+        android:letterSpacing=".1"
+        android:text="v12.6.1"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="12dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
