@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
-        android:id="@+id/spinnerRegiao"
+        android:id="@+id/spinRegiao"
         android:layout_width="115dp"
         android:layout_height="50dp"
         android:background="@android:drawable/btn_dropdown"
@@ -90,7 +90,7 @@
 
         app:layout_constraintEnd_toEndOf="@+id/edtNickname"
         app:layout_constraintStart_toStartOf="@+id/edtNickname"
-        app:layout_constraintTop_toBottomOf="@id/spinnerRegiao" />
+        app:layout_constraintTop_toBottomOf="@id/spinRegiao" />
 
     <TextView
         android:id="@+id/textAppVersion"

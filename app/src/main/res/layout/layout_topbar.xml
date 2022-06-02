@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/linearCabecalho"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:background="@color/preto_principal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription=""
+            android:text=""
+            android:fontFamily="@font/alegreya_sans_sc"
+            android:letterSpacing=".1"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="32dp"/>
+
+        FALTA COLOCAR O ÍCONE DE VOLTAR E O ESPAÇO PARA O CAMPEÃO
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeBorda1"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/topbar_line"
+        app:layout_constraintEnd_toEndOf="@+id/linearCabecalho"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/linearCabecalho"
+        app:layout_constraintTop_toTopOf="@+id/linearCabecalho">
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
