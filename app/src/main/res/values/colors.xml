@@ -7,9 +7,17 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
+
+    <!-- CORES DO APP -->
+    <color name="branco">#FFFFFFFF</color>
     <color name="preto_principal">#14181D</color>
+    <color name="preto_scroll_opc">#B3363636</color>
+    <color name="preto_scroll">#363636</color>
+    <color name="cinza_hint">#B9B9B9</color>
+    <color name="cinza_texto">#CDCDCD</color>
+
     <color name="marrom_botao">#836840</color>
     <color name="marrom_botao_texto">#C4B998</color>
-    <color name="marrom_lines">#866840</color>
+    <color name="marrom_lines1">#866840</color>
+    <color name="marrom_lines2">#C4B998</color>
 </resources>

@@ -41,7 +41,7 @@
         android:fontFamily="@font/alegreya_sans_sc"
         android:letterSpacing=".1"
         android:textAlignment="center"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/branco"
         android:textSize="22sp"
 
         app:layout_constraintStart_toStartOf="parent"
@@ -54,15 +54,18 @@
         android:layout_width="230dp"
         android:layout_height="50dp"
         android:hint="NICKNAME"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textAppVersion"
-        android:layout_marginBottom="180dp"
-        android:backgroundTint="#C4B998"
-        android:textColorHint="#B9B9B9"
+        android:backgroundTint="@color/marrom_lines2"
+        android:textColorHint="@color/cinza_hint"
+        android:textColor="@color/branco"
         android:fontFamily="@font/alegreya_sans_sc"
         android:textSize="20sp"
+        android:lines="1"
+        android:maxLength="16"
+        android:inputType="text"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textAppVersion"
+        android:layout_marginBottom="180dp"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Spinner
@@ -100,7 +103,7 @@
         android:fontFamily="@font/alata"
         android:letterSpacing=".1"
         android:text="v12.6.1"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/branco"
         android:textSize="18sp"
 
         app:layout_constraintEnd_toEndOf="parent"
