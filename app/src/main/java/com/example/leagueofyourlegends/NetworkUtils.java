@@ -11,51 +11,67 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class NetworkUtils {
-    ARRUMAR ISSO TUDO
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    // Constantes utilizadas pela API
-    // URL para a API League of Legends...
-    private static final String LIVROS_URL = "https://developer.riotgames.com/apis";
-    // Parâmetros de busca
-    private static final String QUERY_PARAM = "q";
-    // Limitador da qtde de resultados
-    private static final String MAX_RESULTS = "maxResults";
-    // Parametro do tipo de impressão
-    private static final String TIPO_IMPRESSAO = "printType";
-    static String buscaInfosLivro(String queryString) {
+    private static final String API_KEY = "RGAPI-3f7fcf3d-4114-485c-b637-129c0ac945a8";
+
+    static String buscaInvocador(String REGIAO, String NICKNAME){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-        String bookJSONString = null;
+        String InvocadorJSONString = null;
+
+        String DOMINIO = REGIAO.toLowerCase() + ".api.riotgames.com";
+
         try {
-            // Construção da URI de Busca
-            Uri builtURI = Uri.parse(LIVROS_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARAM, queryString)
-                    .appendQueryParameter(MAX_RESULTS, "10")
-                    .appendQueryParameter(TIPO_IMPRESSAO, "books")
+            // Contrução da URL de busca
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("https")
+                    .authority( DOMINIO )
+                    .appendPath("lol")
+                    .appendPath("summoner")
+                    .appendPath("v4")
+                    .appendPath("summoners")
+                    .appendPath("by-name")
+                    .appendPath( NICKNAME )
+                    .appendQueryParameter("api_key", API_KEY)
                     .build();
+
             // Converte a URI para a URL.
-            URL requestURL = new URL(builtURI.toString());
+            URL UrlBusca = new URL(uriBuilder.toString());
+
             // Abre a conexão de rede
-            urlConnection = (HttpURLConnection) requestURL.openConnection();
-            urlConnection.setRequestMethod("GET");
-            urlConnection.connect();
-            // Busca o InputStream.
-            InputStream inputStream = urlConnection.getInputStream();
-            // Cria o buffer para o input stream
-            reader = new BufferedReader(new InputStreamReader(inputStream));
-            // Usa o StringBuilder para receber a resposta.
-            StringBuilder builder = new StringBuilder();
-            String linha;
-            while ((linha = reader.readLine()) != null) {
-                // Adiciona a linha a string.
-                builder.append(linha);
-                builder.append("\n");
+            try {
+                urlConnection = (HttpURLConnection) UrlBusca.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.connect();
+
+                // Busca o InputStream
+                InputStream inputStream = urlConnection.getInputStream();
+
+                // Cria o buffer para o input stream
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            if (builder.length() == 0) {
-                // se o stream estiver vazio não faz nada
+
+            // Usa o StringBuilder para receber a resposta.
+            StringBuilder stringBuilder = new StringBuilder();
+            String linha;
+
+            if (reader != null) {
+                while ((linha = reader.readLine()) != null) {
+                    // Adiciona a linha a string.
+                    stringBuilder.append(linha);
+                    stringBuilder.append("\n");
+                }
+            } else {
+                // Se o stream estiver vazio não faz nada
                 return null;
             }
-            bookJSONString = builder.toString();
+
+            // String com o JSON
+            InvocadorJSONString = stringBuilder.toString();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -71,9 +87,8 @@ public class NetworkUtils {
                 }
             }
         }
-        // escreve o Json no log
-        Log.d(LOG_TAG, bookJSONString);
-        return bookJSONString;
-    }
-
+        // Retornar e escrever o Json no log
+        Log.d(LOG_TAG, InvocadorJSONString);
+        return InvocadorJSONString;
+        }
 }

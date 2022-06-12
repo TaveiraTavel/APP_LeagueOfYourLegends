@@ -22,7 +22,35 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Incluindo Topbar -->
-    <include android:id="@+id/navbar" layout="@layout/layout_topbar" />
+        <include android:id="@+id/navbar" layout="@layout/layout_topbar" />
+
+    <LinearLayout
+        android:id="@+id/linearContainer"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:orientation="horizontal"
+        android:background="@color/marrom_botao"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navbar"
+        android:layout_marginTop="42dp"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeBorda2"
+        android:layout_width="0dp"
+        android:layout_height="16dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/topbar_line"
+        android:backgroundTint="@color/marrom_lines2"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/linearContainer"
+        app:layout_constraintTop_toTopOf="@+id/linearContainer" />
 
     <ScrollView
         android:id="@+id/scrollContainer"
@@ -60,7 +88,7 @@
                     android:orientation="horizontal" />
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription=""
@@ -69,7 +97,9 @@
                     android:text="RANKED"
                     android:textAlignment="center"
                     android:textColor="@color/cinza_texto"
-                    android:textSize="26sp" />
+                    android:textSize="26sp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -93,12 +123,12 @@
 
                 <ImageView
                     android:id="@+id/imgInvIcon"
-                    android:layout_width="400dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="457px"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
 
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:src="@drawable/emblem_grandmaster" />
 
                 <LinearLayout
@@ -107,11 +137,11 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="20dp"
 
-                    android:layout_weight="1"
+                    android:layout_weight="5"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription=""
@@ -120,10 +150,10 @@
                         android:text="CHALLENGER"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
-                        android:textSize="22sp" />
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription=""
@@ -132,10 +162,10 @@
                         android:text="IV"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
-                        android:textSize="18sp" />
+                        android:textSize="16sp" />
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:contentDescription=""
@@ -144,7 +174,7 @@
                         android:text="LP: 1029"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
-                        android:textSize="16sp" />
+                        android:textSize="14sp" />
 
                 </LinearLayout>
 
@@ -205,7 +235,7 @@
                         android:textColor="@color/cinza_texto"
                         android:textSize="16sp"
 
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="8dp" />
 
                 </LinearLayout>
 
@@ -254,7 +284,7 @@
                         android:textColor="@color/cinza_texto"
                         android:textSize="16sp"
 
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="8dp" />
 
                 </LinearLayout>
 
@@ -295,7 +325,7 @@
                         android:text="HOTSTREAK!!"
 
                         android:textColor="@color/cinza_texto"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
 
                 </LinearLayout>
 
@@ -324,7 +354,7 @@
                         android:text="INATIVO!"
 
                         android:textColor="@color/cinza_texto"
-                        android:textSize="18sp" />
+                        android:textSize="17sp" />
 
                 </LinearLayout>
 
@@ -349,16 +379,18 @@
                     android:orientation="horizontal" />
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:contentDescription=""
                     android:fontFamily="@font/alegreya_sans_sc"
                     android:letterSpacing=".15"
-                    android:text="RANKED"
+                    android:text="POOL"
                     android:textAlignment="center"
                     android:textColor="@color/cinza_texto"
-                    android:textSize="26sp" />
+                    android:textSize="26sp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -378,22 +410,25 @@
                 android:layout_below="@+id/linearAreaPool"
 
                 android:layout_centerInParent="true"
+                android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="35dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearAreaPool"
-                    android:layout_marginTop="72dp"
-                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_weight="1"
 
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
                         android:layout_marginBottom="2dp"
                         app:cardCornerRadius="100dp">
 
@@ -407,43 +442,46 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="GANGPLANK"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:id="@+id/imgMaestria2"
-                        android:layout_width="80dp"
-                        android:layout_height="82dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:src="@drawable/master7" />
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="131.803"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="PTS"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -452,13 +490,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearAreaPool"
+                    android:layout_weight="1"
                     android:gravity="center"
 
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
                         android:layout_marginBottom="2dp"
                         app:cardCornerRadius="100dp">
 
@@ -472,35 +513,38 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="GANGPLANK"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:id="@+id/imgMaestria1"
-                        android:layout_width="80dp"
-                        android:layout_height="82dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:src="@drawable/master7" />
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="131.803"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
+                        android:minWidth="120dp"
                         android:layout_height="wrap_content"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
@@ -508,7 +552,7 @@
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -517,14 +561,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearAreaPool"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="56dp"
+                    android:layout_weight="1"
 
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
                         android:layout_marginBottom="2dp"
                         app:cardCornerRadius="100dp">
 
@@ -538,43 +583,46 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="GANGPLANK"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="17sp" />
+                        android:textSize="15sp" />
 
                     <ImageView
                         android:id="@+id/imgMaestria3"
-                        android:layout_width="80dp"
-                        android:layout_height="82dp"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
                         android:src="@drawable/master7" />
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="131.803"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
                     <TextView
-                        android:layout_width="120dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:text="PTS"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
-                        android:textSize="15sp" />
+                        android:textSize="14sp" />
 
 
                 </LinearLayout>
@@ -584,34 +632,6 @@
         </RelativeLayout>
 
     </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/linearContainer"
-        android:layout_width="0dp"
-        android:layout_height="16dp"
-        android:orientation="horizontal"
-        android:background="@color/marrom_botao"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/navbar"
-        android:layout_marginTop="42dp"/>
-
-    <RelativeLayout
-        android:id="@+id/relativeBorda2"
-        android:layout_width="0dp"
-        android:layout_height="16dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/topbar_line"
-        android:backgroundTint="@color/marrom_lines2"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/linearContainer"
-        app:layout_constraintTop_toTopOf="@+id/linearContainer" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

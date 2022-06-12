@@ -89,7 +89,7 @@
         android:text="ENTRAR"
         android:textColor="@color/marrom_botao_texto"
         android:textSize="18sp"
-        android:onClick="abrirPerfilActivity"
+        android:onClick="buscarInvocador"
 
         app:layout_constraintEnd_toEndOf="@+id/edtNickname"
         app:layout_constraintStart_toStartOf="@+id/edtNickname"

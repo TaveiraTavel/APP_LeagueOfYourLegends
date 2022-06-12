@@ -1,60 +1,53 @@
 package com.example.leagueofyourlegends;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.loader.app.LoaderManager;
-import androidx.loader.content.Loader;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
-public class PerfilActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
+public class PerfilActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
-        if (getSupportLoaderManager().getLoader(0) != null) {
-            getSupportLoaderManager().initLoader(0, null, this);
-        }
 
+        // Pegando dados da tela anterior
         Bundle extras = getIntent().getExtras();
-        String NICKNAME = extras.getString("invNickname");
-        String REGIAO = extras.getString("invRegiao");
+        String summonerNickname = extras.getString("summonerNickname");
+        String summonerRegion = extras.getString("summonerRegion");
+        int summonerLevel = extras.getInt("summonerLevel");
+        int profileIconId = extras.getInt("profileIconId");
 
+        // Colocando Nickname na View
         TextView textNickname = (TextView) findViewById(R.id.textNickname);
-        textNickname.setText(NICKNAME);
-        textNickname.setContentDescription(NICKNAME);
+        textNickname.setText(summonerNickname);
+        textNickname.setContentDescription(summonerNickname);
 
-        // API Trabajo.
+        // Colocando Icone na View
+        ImageView imgInvIcon = (ImageView) findViewById(R.id.imgInvIcon);
+        String imageIconURL = "https://ddragon.leagueoflegends.com/cdn/" + "12.11.1" +
+                          "/img/profileicon/" + profileIconId + ".png";
+        Picasso.get().load(imageIconURL).into(imgInvIcon);
 
-            Bundle queryBundle = new Bundle();
-            queryBundle.putString("queryString", NICKNAME);
-            getSupportLoaderManager().restartLoader(0, queryBundle, this);
+        // Colocando Região na View
+        TextView textRegiao = (TextView) findViewById(R.id.textRegiao);
+        textRegiao.setText(summonerRegion);
+        textRegiao.setContentDescription("Região " + summonerRegion);
 
-
+        // Colocando Level na View
+        TextView textLevel = (TextView) findViewById(R.id.textLevel);
+        textLevel.setText("NV." + summonerLevel);
+        textLevel.setContentDescription("Nível " + textLevel);
     }
 
-    @NonNull
-    @Override
-    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
-        return null;
-    }
-
-    @Override
-    public void onLoadFinished(@NonNull Loader<String> loader, String data) {
-
-    }
-
-    @Override
-    public void onLoaderReset(@NonNull Loader<String> loader) {
-
+    public void voltarBuscaActivity(View view){
+        onBackPressed();
     }
 }

@@ -17,12 +17,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>  {
 
     // Banco de Dados
     DatabaseHelper mydb;
 
     private Spinner spinner;
+
+    // Acessando a tela
+    EditText edtNickname;
+    Spinner spinRegiao;
+    String queryNickname;
+    String queryRegiao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +52,14 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
+
+        // Acessando a tela
+        edtNickname = (EditText) findViewById(R.id.edtNickname);
+        spinRegiao = (Spinner) findViewById(R.id.spinRegiao);
     }
 
     // Botão Entrar
-    public void abrirPerfilActivity(View view) {
+    public void buscarInvocador(View view) {
 
 
         // Verifica o status da conexão de rede
@@ -57,33 +71,105 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Acessando a tela
-        EditText edtNickname = (EditText) findViewById(R.id.edtNickname);
-        Spinner spinRegiao = (Spinner) findViewById(R.id.spinRegiao);
+        queryNickname = edtNickname.getText().toString();
+        queryRegiao = spinRegiao.getSelectedItem().toString();
 
-        String NICKNAME = edtNickname.getText().toString();
-        String REGIAO = spinRegiao.getSelectedItem().toString();
-
-        // Se a rede estiver disponivel e o campo de busca não estiver vazio, vai para a tela de Perfil
+        // Se a rede estiver disponivel e o campo de busca não estiver vazio, iniciar o Loader CarregaInvocador
         if (networkInfo != null && networkInfo.isConnected()
-            && NICKNAME.length() != 0) {
+            && queryNickname.length() != 0) {
 
-            LEMBRAR DE VERIFICAR SE NÃO ESTÁ VAZIO A CAIXA DE TEXTO!!!!!!!!!!!!!!!!!!!!!!!
-
-            // Intent explícita
-            Intent intent = new Intent(this, PerfilActivity.class);
-            intent.putExtra("invNickname", NICKNAME);
-            intent.putExtra("invRegiao", REGIAO);
-            startActivity(intent);
-            this.overridePendingTransition(0, 0);
+            Bundle queryBundle = new Bundle();
+            queryBundle.putString("queryRegiao", queryRegiao);
+            queryBundle.putString("queryNickname", queryNickname);
+            getSupportLoaderManager().restartLoader(0, queryBundle, this);
+            Toast.makeText(getApplicationContext(), "Procurando pelo invocador...", Toast.LENGTH_SHORT).show();
         }
         // atualiza a textview para informar que não há conexão ou termo de busca
         else {
-            if (NICKNAME.length() == 0) {
-                Toast.makeText(getApplicationContext(), "Informe seu Nickname.", Toast.LENGTH_SHORT).show();
+            if (queryNickname.length() == 0) {
+                Toast.makeText(getApplicationContext(), "Informe um nickname", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Verifique sua conexão...", Toast.LENGTH_SHORT).show();
-           \ }
+                Toast.makeText(getApplicationContext(), "Verifique sua conexão!", Toast.LENGTH_SHORT).show();
+           }
         }
     }
 
+    @NonNull
+    @Override
+    public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
+        String queryRegiao = "";
+        String queryNickname = "";
+        if (args != null) {
+            queryRegiao = args.getString("queryRegiao");
+            queryNickname = args.getString("queryNickname");
+        }
+        return new CarregaInvocador(this, queryRegiao, queryNickname);
+    }
+
+    @Override
+    public void onLoadFinished(@NonNull Loader<String> loader, String data) {
+        try{
+            // Converter a resposta em JSON
+            JSONObject jsonObject = new JSONObject(data);
+
+            // Inicializar contador e itens a serem buscados
+            String summonerNickname = null;
+            String encryptedSummonerId = null;
+            Integer profileIconId = null;
+            Integer summonerLevel = null;
+
+            // Procurando pelos itens
+            try {
+                summonerNickname = jsonObject.getString("name");
+                encryptedSummonerId = jsonObject.getString("id");
+                profileIconId = jsonObject.getInt("profileIconId");
+                summonerLevel = jsonObject.getInt("summonerLevel");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // Verificando dados retornados
+            if (summonerNickname != null &&
+                encryptedSummonerId != null &&
+                profileIconId != null &&
+                summonerLevel != null){
+                // Abrir próxima activity
+                abrirPerfilActivity(summonerNickname,
+                                    encryptedSummonerId,
+                                    profileIconId,
+                                    summonerLevel);
+
+                // Destruir loader para fazer próxima busca
+                getSupportLoaderManager().destroyLoader(0);
+            }
+
+        } catch (Exception e) {
+            // Se não receber um JSON válido, informa ao usuário
+            Toast.makeText(getApplicationContext(), "Não encontramos esse invocador :/", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onLoaderReset(@NonNull Loader<String> loader) {
+        // Obrigatório implementar, nenhuma ação executada
+    }
+
+    // Abrir PerfilActivity
+    public void abrirPerfilActivity(String summonerNickname,
+                                    String encryptedSummonerId,
+                                    int profileIconId,
+                                    int summonerLevel) {
+
+        // Intent explícita
+        Intent intent = new Intent(this, PerfilActivity.class);
+        intent.putExtra("summonerNickname", summonerNickname);
+        intent.putExtra("summonerRegion", spinRegiao.getSelectedItem().toString());
+        intent.putExtra("encryptedSummonerId", encryptedSummonerId);
+        intent.putExtra("profileIconId", profileIconId);
+        intent.putExtra("summonerLevel", summonerLevel);
+        startActivity(intent);
+        this.overridePendingTransition(0, 0);
+    }
 }
