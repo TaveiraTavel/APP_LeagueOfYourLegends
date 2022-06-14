@@ -216,30 +216,30 @@
                             android:id="@+id/textPartidas"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:contentDescription=""
                             android:fontFamily="@font/alata"
                             android:letterSpacing=".15"
                             android:text="XXX"
                             android:textAlignment="center"
                             android:textColor="@color/cinza_texto"
-                            android:textSize="16sp"
 
-                            android:layout_gravity="center"/>
+                            android:textSize="16sp" />
 
                     </FrameLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:letterSpacing=".15"
                         android:text="PARTIDAS"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
-                        android:textSize="16sp"
 
-                        android:layout_marginTop="8dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -266,30 +266,30 @@
                             android:id="@+id/textWinrate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:contentDescription=""
                             android:fontFamily="@font/alata"
                             android:letterSpacing=".15"
                             android:text="XXX"
                             android:textAlignment="center"
                             android:textColor="@color/cinza_texto"
-                            android:textSize="16sp"
 
-                            android:layout_gravity="center"/>
+                            android:textSize="16sp" />
 
                     </FrameLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
                         android:letterSpacing=".15"
                         android:text="WINRATE"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
-                        android:textSize="16sp"
 
-                        android:layout_marginTop="8dp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
 
@@ -447,12 +447,13 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/textChampion2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
-                        android:text="GANGPLANK"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
@@ -465,12 +466,13 @@
                         android:src="@drawable/master7" />
 
                     <TextView
+                        android:id="@+id/textPoints2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
-                        android:text="131.803"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
@@ -518,12 +520,13 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/textChampion1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
-                        android:text="GANGPLANK"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
@@ -536,12 +539,13 @@
                         android:src="@drawable/master7" />
 
                     <TextView
+                        android:id="@+id/textPoints1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
-                        android:text="131.803"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
@@ -588,12 +592,13 @@
                     </androidx.cardview.widget.CardView>
 
                     <TextView
+                        android:id="@+id/textChampion3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
-                        android:text="GANGPLANK"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
@@ -606,12 +611,13 @@
                         android:src="@drawable/master7" />
 
                     <TextView
+                        android:id="@+id/textPoints3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
-                        android:text="131.803"
+                        android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
 
