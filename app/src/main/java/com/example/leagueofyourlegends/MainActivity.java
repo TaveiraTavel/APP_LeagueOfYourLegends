@@ -21,6 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>  {
 
     // Banco de Dados
@@ -118,12 +119,28 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Integer profileIconId = null;
             Integer summonerLevel = null;
 
+            String tier = null;
+            String rank = null;
+            Integer leaguePoints = null;
+            Integer wins = null;
+            Integer losses = null;
+            Boolean hotStreak = null;
+            Boolean inactive = null;
+
             // Procurando pelos itens
             try {
-                summonerNickname = jsonObject.getString("name");
-                encryptedSummonerId = jsonObject.getString("id");
-                profileIconId = jsonObject.getInt("profileIconId");
-                summonerLevel = jsonObject.getInt("summonerLevel");
+                summonerNickname = jsonObject.getString("nickname");
+                encryptedSummonerId = jsonObject.getString("summonerId");
+                profileIconId = jsonObject.getInt("iconId");
+                summonerLevel = jsonObject.getInt("level");
+
+                tier = jsonObject.getString("tier");
+                rank = jsonObject.getString("rank");
+                leaguePoints = jsonObject.getInt("points");
+                wins = jsonObject.getInt("wins");
+                losses = jsonObject.getInt("losses");
+                hotStreak = jsonObject.getBoolean("hotStreak");
+                inactive = jsonObject.getBoolean("inactive");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -132,12 +149,27 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             if (summonerNickname != null &&
                 encryptedSummonerId != null &&
                 profileIconId != null &&
-                summonerLevel != null){
+                summonerLevel != null &&
+
+                tier != null &&
+                rank != null &&
+                leaguePoints != null &&
+                wins != null &&
+                losses != null &&
+                hotStreak != null &&
+                inactive != null){
                 // Abrir próxima activity
                 abrirPerfilActivity(summonerNickname,
                                     encryptedSummonerId,
                                     profileIconId,
-                                    summonerLevel);
+                                    summonerLevel,
+                                    tier,
+                                    rank,
+                                    leaguePoints,
+                                    wins,
+                                    losses,
+                                    hotStreak,
+                                    inactive);
 
                 // Destruir loader para fazer próxima busca
                 getSupportLoaderManager().destroyLoader(0);
@@ -160,15 +192,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void abrirPerfilActivity(String summonerNickname,
                                     String encryptedSummonerId,
                                     int profileIconId,
-                                    int summonerLevel) {
+                                    int summonerLevel,
+
+                                    String tier,
+                                    String rank,
+                                    int leaguePoints,
+                                    int wins,
+                                    int losses,
+                                    Boolean hotStreak,
+                                    Boolean inactive) {
 
         // Intent explícita
         Intent intent = new Intent(this, PerfilActivity.class);
-        intent.putExtra("summonerNickname", summonerNickname);
-        intent.putExtra("summonerRegion", spinRegiao.getSelectedItem().toString());
-        intent.putExtra("encryptedSummonerId", encryptedSummonerId);
-        intent.putExtra("profileIconId", profileIconId);
-        intent.putExtra("summonerLevel", summonerLevel);
+        intent.putExtra("nickname", summonerNickname);
+        intent.putExtra("regiao", spinRegiao.getSelectedItem().toString());
+        intent.putExtra("summonerId", encryptedSummonerId);
+        intent.putExtra("iconId", profileIconId);
+        intent.putExtra("level", summonerLevel);
+
+        intent.putExtra("tier", tier);
+        intent.putExtra("rank", rank);
+        intent.putExtra("points", leaguePoints);
+        intent.putExtra("wins", wins);
+        intent.putExtra("losses", losses);
+        intent.putExtra("hotStreak", hotStreak);
+        intent.putExtra("inactive", inactive);
         startActivity(intent);
         this.overridePendingTransition(0, 0);
     }

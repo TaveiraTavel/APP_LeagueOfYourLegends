@@ -3,7 +3,12 @@ package com.example.leagueofyourlegends;
 import android.net.Uri;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -12,26 +17,124 @@ import java.net.URL;
 
 public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String API_KEY = "RGAPI-3f7fcf3d-4114-485c-b637-129c0ac945a8";
+    private static final String API_KEY = "RGAPI-78f2a258-8849-4ce9-9c06-34e02e1f3790";
 
-    static String buscaInvocador(String REGIAO, String NICKNAME){
+    static String buscaInvocador(String regiao, String nickname){
+        String SummonerJSONString = null;
+        String LeagueJSONString = null;
+        String ChampionMasteryJSONString = null;
+        String PerfilJSONString = null;
+
+        String apiDomain = regiao.toLowerCase() + ".api.riotgames.com";
+
+        try {
+            // Busca no EndPoint Summoner
+            SummonerJSONString = getSummonerJSONString(apiDomain, nickname);
+            if (SummonerJSONString == null){
+                return null;
+            }
+            JSONObject SummonerJSONObject = new JSONObject(SummonerJSONString);
+
+            // Inicializar contador e itens a serem buscados
+            String summonerNickname = null;
+            String encryptedSummonerId = null;
+            Integer profileIconId = null;
+            Integer summonerLevel = null;
+
+            // Procurando pelos itens
+            try {
+                summonerNickname = SummonerJSONObject.getString("name");
+                encryptedSummonerId = SummonerJSONObject.getString("id");
+                profileIconId = SummonerJSONObject.getInt("profileIconId");
+                summonerLevel = SummonerJSONObject.getInt("summonerLevel");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // Busca no EndPoint League
+            LeagueJSONString = getLeagueJSONString(apiDomain, encryptedSummonerId);
+            JSONArray LeagueJSONArray = new JSONArray(LeagueJSONString);
+            JSONObject LeagueJSONObject = LeagueJSONArray.getJSONObject(0);
+
+            // Inicializar contador e itens a serem buscados
+            String tier = null;
+            String rank = null;
+            Integer leaguePoints = null;
+            Integer wins = null;
+            Integer losses = null;
+            Boolean hotStreak = null;
+            Boolean inactive = null;
+
+            // Procurando pelos itens
+            try {
+                tier = LeagueJSONObject.getString("tier");
+                rank = LeagueJSONObject.getString("rank");
+                leaguePoints = LeagueJSONObject.getInt("leaguePoints");
+                wins = LeagueJSONObject.getInt("wins");
+                losses = LeagueJSONObject.getInt("losses");
+                hotStreak = LeagueJSONObject.getBoolean("hotStreak");
+                inactive = LeagueJSONObject.getBoolean("inactive");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // Criando JSON com todos os dados
+            JSONObject PerfilJSONObject = new JSONObject();
+            try {
+                PerfilJSONObject.put("nickname", summonerNickname);
+                PerfilJSONObject.put("summonerId", encryptedSummonerId);
+                PerfilJSONObject.put("iconId", profileIconId);
+                PerfilJSONObject.put("level", summonerLevel);
+
+                PerfilJSONObject.put("tier", tier);
+                PerfilJSONObject.put("rank", rank);
+                PerfilJSONObject.put("points", leaguePoints);
+                PerfilJSONObject.put("wins", wins);
+                PerfilJSONObject.put("losses", losses);
+                PerfilJSONObject.put("hotStreak", hotStreak);
+                PerfilJSONObject.put("inactive", inactive);
+
+                PerfilJSONString = PerfilJSONObject.toString();
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+/*
+        // Busca no EndPoint Champion Mastery
+        ChampionMasteryJSONString = getChampionMasteryJSONString(apiDomain, encryptedSummonerId);
+
+        Integer championId = null;
+        Integer championLevel = null;
+        Integer championPoints = null;
+
+        JSONObject championMastery_1 =Leag
+*/
+
+        Log.
+                d(LOG_TAG, PerfilJSONString);
+        return PerfilJSONString;
+    }
+
+    static String getSummonerJSONString(String apiDomain, String nickname){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
-        String InvocadorJSONString = null;
-
-        String DOMINIO = REGIAO.toLowerCase() + ".api.riotgames.com";
+        String JSONString = null;
 
         try {
             // Contrução da URL de busca
             Uri.Builder uriBuilder = new Uri.Builder();
             uriBuilder.scheme("https")
-                    .authority( DOMINIO )
+                    .authority( apiDomain )
                     .appendPath("lol")
                     .appendPath("summoner")
                     .appendPath("v4")
                     .appendPath("summoners")
                     .appendPath("by-name")
-                    .appendPath( NICKNAME )
+                    .appendPath( nickname )
                     .appendQueryParameter("api_key", API_KEY)
                     .build();
 
@@ -71,7 +174,8 @@ public class NetworkUtils {
             }
 
             // String com o JSON
-            InvocadorJSONString = stringBuilder.toString();
+            JSONString = stringBuilder.toString();
+
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -87,8 +191,165 @@ public class NetworkUtils {
                 }
             }
         }
-        // Retornar e escrever o Json no log
-        Log.d(LOG_TAG, InvocadorJSONString);
-        return InvocadorJSONString;
+
+        // Retornar o Json
+        Log.d(LOG_TAG, JSONString);
+        return JSONString;
+    }
+
+    static String getLeagueJSONString(String apiDomain, String leagueID){
+        HttpURLConnection urlConnection = null;
+        BufferedReader reader = null;
+        String JSONString = null;
+
+        try {
+            // Contrução da URL de busca
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("https")
+                    .authority( apiDomain )
+                    .appendPath("lol")
+                    .appendPath("league")
+                    .appendPath("v4")
+                    .appendPath("entries")
+                    .appendPath("by-summoner")
+                    .appendPath( leagueID )
+                    .appendQueryParameter("api_key", API_KEY)
+                    .build();
+
+            // Converte a URI para a URL.
+            URL UrlBusca = new URL(uriBuilder.toString());
+
+            // Abre a conexão de rede
+            try {
+                urlConnection = (HttpURLConnection) UrlBusca.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.connect();
+
+                // Busca o InputStream
+                InputStream inputStream = urlConnection.getInputStream();
+
+                // Cria o buffer para o input stream
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Usa o StringBuilder para receber a resposta.
+            StringBuilder stringBuilder = new StringBuilder();
+            String linha;
+
+            if (reader != null) {
+                while ((linha = reader.readLine()) != null) {
+                    // Adiciona a linha a string.
+                    stringBuilder.append(linha);
+                    stringBuilder.append("\n");
+                }
+            } else {
+                // Se o stream estiver vazio não faz nada
+                return null;
+            }
+
+            // String com o JSON
+            JSONString = stringBuilder.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // fecha a conexão e o buffer.
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+        // Retornar o Json
+        Log.d(LOG_TAG, JSONString);
+        return JSONString;
+    }
+
+    static String getChampionMasteryJSONString(String apiDomain, String leagueID){
+        HttpURLConnection urlConnection = null;
+        BufferedReader reader = null;
+        String JSONString = null;
+
+        try {
+            // Contrução da URL de busca
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("https")
+                    .authority( apiDomain )
+                    .appendPath("lol")
+                    .appendPath("champion-mastery")
+                    .appendPath("v4")
+                    .appendPath("champion-masteries")
+                    .appendPath("by-summoner")
+                    .appendPath( leagueID )
+                    .appendQueryParameter("api_key", API_KEY)
+                    .build();
+
+            // Converte a URI para a URL.
+            URL UrlBusca = new URL(uriBuilder.toString());
+
+            // Abre a conexão de rede
+            try {
+                urlConnection = (HttpURLConnection) UrlBusca.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.connect();
+
+                // Busca o InputStream
+                InputStream inputStream = urlConnection.getInputStream();
+
+                // Cria o buffer para o input stream
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Usa o StringBuilder para receber a resposta.
+            StringBuilder stringBuilder = new StringBuilder();
+            String linha;
+
+            if (reader != null) {
+                while ((linha = reader.readLine()) != null) {
+                    // Adiciona a linha a string.
+                    stringBuilder.append(linha);
+                    stringBuilder.append("\n");
+                }
+            } else {
+                // Se o stream estiver vazio não faz nada
+                return null;
+            }
+
+            // String com o JSON
+            JSONString = stringBuilder.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // fecha a conexão e o buffer.
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // Retornar o Json
+        Log.d(LOG_TAG, JSONString);
+        return JSONString;
+    }
 }

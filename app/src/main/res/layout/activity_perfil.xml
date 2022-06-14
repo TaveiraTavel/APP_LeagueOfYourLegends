@@ -122,14 +122,14 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imgInvIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="457px"
+                    android:id="@+id/imgInvTier"
+                    android:layout_width="400dp"
+                    android:layout_height="200dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
 
                     android:layout_weight="5"
-                    android:src="@drawable/emblem_grandmaster" />
+                    android:background="@drawable/emblem_gold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -141,6 +141,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textInvTier"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -153,6 +154,7 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/textInvRank"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -165,6 +167,7 @@
                         android:textSize="16sp" />
 
                     <TextView
+                        android:id="@+id/textInvLp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -203,6 +206,7 @@
 
                         <!-- Gráfico com a biblioteca EazeGraph <https://github.com/blackfizz/EazeGraph> -->
                         <org.eazegraph.lib.charts.PieChart
+                            android:id="@+id/piePartidas"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
                             app:egInnerPadding="72"
@@ -252,6 +256,7 @@
 
                         <!-- Gráfico com a biblioteca EazeGraph <https://github.com/blackfizz/EazeGraph> -->
                         <org.eazegraph.lib.charts.PieChart
+                            android:id="@+id/pieWinrate"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
                             app:egInnerPadding="72"
@@ -330,7 +335,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearInativo"
+                    android:id="@+id/linearInactive"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
