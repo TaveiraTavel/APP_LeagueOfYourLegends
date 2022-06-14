@@ -27,3 +27,4 @@ public class CarregaInvocador extends AsyncTaskLoader<String> {
         return NetworkUtils.buscaInvocador(queryRegiao, queryInvocador);
     }
 }
+

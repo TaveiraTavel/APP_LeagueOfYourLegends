@@ -1,7 +1,10 @@
 package com.example.leagueofyourlegends;
 
+import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,6 +17,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Iterator;
 
 public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
@@ -23,9 +27,11 @@ public class NetworkUtils {
         String SummonerJSONString = null;
         String LeagueJSONString = null;
         String ChampionMasteryJSONString = null;
+        String ChampionsJSONString = null;
         String PerfilJSONString = null;
 
         String apiDomain = regiao.toLowerCase() + ".api.riotgames.com";
+        String versao = "12.11.1";
 
         try {
             // Busca no EndPoint Summoner
@@ -78,6 +84,51 @@ public class NetworkUtils {
                 e.printStackTrace();
             }
 
+            // Busca no EndPoint Champion Mastery
+            ChampionMasteryJSONString = getChampionMasteryJSONString(apiDomain, encryptedSummonerId);
+            JSONArray ChampionMasteryJSONArray = new JSONArray(ChampionMasteryJSONString);
+            JSONArray topChampionMasteryJSONArray = new JSONArray();
+
+            // Contador e itens a serem buscados
+            for (int i = 0; i <= 2; i++){
+                JSONObject ChampionMasteryJSONObject = ChampionMasteryJSONArray.getJSONObject(i);
+
+                JSONObject topChampionMasteryJSONObject = new JSONObject();
+
+                // Busca no EndPoint Champions
+                ChampionsJSONString = getChampionsJSONString(versao);
+                JSONObject ChampionsJSONObject = new JSONObject(ChampionsJSONString);
+
+                String championName = null;
+                String championImage = null;
+
+                try {
+                    JSONObject ChampionsDataJSONObject = ChampionsJSONObject.getJSONObject("data");
+                    Iterator<String> keys = ChampionsDataJSONObject.keys();
+                    String key;
+                    while (keys.hasNext()) {
+                        key = keys.next();
+                        JSONObject ChampionDataObject = ChampionsDataJSONObject.getJSONObject(key);
+
+                        if (ChampionDataObject.getInt("key") == ChampionMasteryJSONObject.getInt("championId")){
+                            championName = ChampionDataObject.getString("name");
+                            championImage = key;
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                topChampionMasteryJSONObject.put("championName", championName);
+                topChampionMasteryJSONObject.put("championImage", championImage);
+                topChampionMasteryJSONObject.put("championLevel", ChampionMasteryJSONObject.getInt("championLevel"));
+                topChampionMasteryJSONObject.put("championPoints", ChampionMasteryJSONObject.getInt("championPoints"));
+
+                topChampionMasteryJSONArray.put(topChampionMasteryJSONObject);
+
+                Log.d(LOG_TAG, topChampionMasteryJSONArray.toString());
+            }
+
             // Criando JSON com todos os dados
             JSONObject PerfilJSONObject = new JSONObject();
             try {
@@ -94,6 +145,8 @@ public class NetworkUtils {
                 PerfilJSONObject.put("hotStreak", hotStreak);
                 PerfilJSONObject.put("inactive", inactive);
 
+                PerfilJSONObject.put("topChampionMastery", topChampionMasteryJSONArray);
+
                 PerfilJSONString = PerfilJSONObject.toString();
 
             } catch (JSONException e) {
@@ -103,19 +156,8 @@ public class NetworkUtils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-/*
-        // Busca no EndPoint Champion Mastery
-        ChampionMasteryJSONString = getChampionMasteryJSONString(apiDomain, encryptedSummonerId);
 
-        Integer championId = null;
-        Integer championLevel = null;
-        Integer championPoints = null;
-
-        JSONObject championMastery_1 =Leag
-*/
-
-        Log.
-                d(LOG_TAG, PerfilJSONString);
+        Log.d(LOG_TAG, PerfilJSONString);
         return PerfilJSONString;
     }
 
@@ -292,6 +334,82 @@ public class NetworkUtils {
                     .appendPath("by-summoner")
                     .appendPath( leagueID )
                     .appendQueryParameter("api_key", API_KEY)
+                    .build();
+
+            // Converte a URI para a URL.
+            URL UrlBusca = new URL(uriBuilder.toString());
+
+            // Abre a conexão de rede
+            try {
+                urlConnection = (HttpURLConnection) UrlBusca.openConnection();
+                urlConnection.setRequestMethod("GET");
+                urlConnection.setReadTimeout(10000);
+                urlConnection.setConnectTimeout(15000);
+                urlConnection.connect();
+
+                // Busca o InputStream
+                InputStream inputStream = urlConnection.getInputStream();
+
+                // Cria o buffer para o input stream
+                reader = new BufferedReader(new InputStreamReader(inputStream));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Usa o StringBuilder para receber a resposta.
+            StringBuilder stringBuilder = new StringBuilder();
+            String linha;
+
+            if (reader != null) {
+                while ((linha = reader.readLine()) != null) {
+                    // Adiciona a linha a string.
+                    stringBuilder.append(linha);
+                    stringBuilder.append("\n");
+                }
+            } else {
+                // Se o stream estiver vazio não faz nada
+                return null;
+            }
+
+            // String com o JSON
+            JSONString = stringBuilder.toString();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            // fecha a conexão e o buffer.
+            if (urlConnection != null) {
+                urlConnection.disconnect();
+            }
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        // Retornar o Json
+        Log.d(LOG_TAG, JSONString);
+        return JSONString;
+    }
+
+    static String getChampionsJSONString(String versao){
+        HttpURLConnection urlConnection = null;
+        BufferedReader reader = null;
+        String JSONString = null;
+
+        try {
+            // Contrução da URL de busca
+            Uri.Builder uriBuilder = new Uri.Builder();
+            uriBuilder.scheme("https")
+                    .authority("ddragon.leagueoflegends.com")
+                    .appendPath("cdn")
+                    .appendPath( versao )
+                    .appendPath("data")
+                    .appendPath("pt_BR")
+                    .appendPath("champion.json")
                     .build();
 
             // Converte a URI para a URL.
