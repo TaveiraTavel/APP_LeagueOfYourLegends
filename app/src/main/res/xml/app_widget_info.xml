@@ -3,5 +3,5 @@
     android:description="@string/app_widget_description"
     android:initialKeyguardLayout="@layout/app_widget"
     android:initialLayout="@layout/app_widget"
-    android:minWidth="70dp"
-    android:minHeight="300dp" />
+    android:minWidth="200dp"
+    android:minHeight="150dp" />

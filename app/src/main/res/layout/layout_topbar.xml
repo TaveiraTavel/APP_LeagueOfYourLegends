@@ -76,6 +76,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_centerHorizontal="true"
+            android:onClick="salvarIconExterno"
 
             app:layout_constraintEnd_toEndOf="@+id/relativeBorda1"
             app:layout_constraintStart_toStartOf="@+id/relativeBorda1"
