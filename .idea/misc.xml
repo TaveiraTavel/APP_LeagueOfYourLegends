@@ -13,6 +13,9 @@
         <entry key="..\:/Users/3etimds/Documents/GitHub/LeagueOfYourLegends/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Users/3etimds/Documents/GitHub/LeagueOfYourLegends/app/src/main/res/layout/activity_perfil.xml" value="0.33" />
         <entry key="..\:/Users/3etimds/Documents/GitHub/LeagueOfYourLegends/app/src/main/res/layout/layout_topbar.xml" value="0.33" />
+        <entry key="..\:/Users/letic/OneDrive/Documentos/Android/LeagueOfYourLegends/app/src/main/res/drawable/style.xml" value="0.169" />
+        <entry key="..\:/Users/letic/OneDrive/Documentos/Android/LeagueOfYourLegends/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/letic/OneDrive/Documentos/Android/LeagueOfYourLegends/app/src/main/res/layout/app_widget.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/topbar_icon.xml" value="0.33" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/topbar_icon_line.xml" value="0.1965" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/topbar_line.xml" value="0.226" />
@@ -22,7 +25,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
