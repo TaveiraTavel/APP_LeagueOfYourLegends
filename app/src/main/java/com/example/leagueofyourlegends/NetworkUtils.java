@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String API_KEY = "RGAPI-78f2a258-8849-4ce9-9c06-34e02e1f3790";
+    private static final String API_KEY = "RGAPI-6c53a210-e073-4381-826c-56d50454ced1";
 
     static String buscaInvocador(String regiao, String nickname){
         String SummonerJSONString = null;
@@ -60,7 +60,6 @@ public class NetworkUtils {
             // Busca no EndPoint League
             LeagueJSONString = getLeagueJSONString(apiDomain, encryptedSummonerId);
             JSONArray LeagueJSONArray = new JSONArray(LeagueJSONString);
-            JSONObject LeagueJSONObject = LeagueJSONArray.getJSONObject(0);
 
             // Inicializar contador e itens a serem buscados
             String tier = null;
@@ -73,6 +72,11 @@ public class NetworkUtils {
 
             // Procurando pelos itens
             try {
+                if (LeagueJSONArray.length() < 1){
+                    return null;
+                }
+                JSONObject LeagueJSONObject = LeagueJSONArray.getJSONObject(0);
+
                 tier = LeagueJSONObject.getString("tier");
                 rank = LeagueJSONObject.getString("rank");
                 leaguePoints = LeagueJSONObject.getInt("leaguePoints");
@@ -145,7 +149,7 @@ public class NetworkUtils {
                 PerfilJSONObject.put("hotStreak", hotStreak);
                 PerfilJSONObject.put("inactive", inactive);
 
-                PerfilJSONObject.put("topChampionMastery", topChampionMasteryJSONArray);
+                PerfilJSONObject.put("topChampionsMastery", topChampionMasteryJSONArray.toString());
 
                 PerfilJSONString = PerfilJSONObject.toString();
 

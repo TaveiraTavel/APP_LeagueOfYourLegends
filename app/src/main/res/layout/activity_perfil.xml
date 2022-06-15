@@ -418,7 +418,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="35dp"
+                android:layout_marginBottom="50dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -439,9 +439,12 @@
 
                         <ImageView
                             android:id="@+id/imgChampion2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="94dp"
+                            android:layout_height="94dp"
                             android:layout_centerInParent="true"
+                            android:scaleType="centerCrop"
+                            android:scrollX="5dp"
+                            android:scrollY="5dp"
                             android:src="@drawable/applogo" />
 
                     </androidx.cardview.widget.CardView>
@@ -450,9 +453,9 @@
                         android:id="@+id/textChampion2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -463,15 +466,15 @@
                         android:id="@+id/imgMaestria2"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/master7" />
+                        android:background="@drawable/master7" />
 
                     <TextView
                         android:id="@+id/textPoints2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -481,9 +484,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text="PTS"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -497,11 +500,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/linearAreaPool"
-                    android:layout_weight="1"
-                    android:gravity="center"
-
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
+
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:orientation="vertical">
 
                     <androidx.cardview.widget.CardView
@@ -512,9 +515,11 @@
 
                         <ImageView
                             android:id="@+id/imgChampion1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="94dp"
+                            android:layout_height="94dp"
                             android:layout_centerInParent="true"
+                            android:scrollX="5dp"
+                            android:scrollY="5dp"
                             android:src="@drawable/applogo" />
 
                     </androidx.cardview.widget.CardView>
@@ -523,9 +528,9 @@
                         android:id="@+id/textChampion1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -536,15 +541,15 @@
                         android:id="@+id/imgMaestria1"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/master7" />
+                        android:background="@drawable/master7" />
 
                     <TextView
                         android:id="@+id/textPoints1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -553,10 +558,10 @@
 
                     <TextView
                         android:layout_width="wrap_content"
-                        android:minWidth="120dp"
                         android:layout_height="wrap_content"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text="PTS"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -584,9 +589,11 @@
 
                         <ImageView
                             android:id="@+id/imgChampion3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="94dp"
+                            android:layout_height="94dp"
                             android:layout_centerInParent="true"
+                            android:scrollX="5dp"
+                            android:scrollY="5dp"
                             android:src="@drawable/applogo" />
 
                     </androidx.cardview.widget.CardView>
@@ -595,9 +602,9 @@
                         android:id="@+id/textChampion3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -608,15 +615,15 @@
                         android:id="@+id/imgMaestria3"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/master7" />
+                        android:background="@drawable/master7" />
 
                     <TextView
                         android:id="@+id/textPoints3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text=""
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"
@@ -626,9 +633,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:minWidth="120dp"
                         android:contentDescription=""
                         android:fontFamily="@font/alata"
+                        android:minWidth="120dp"
                         android:text="PTS"
                         android:textAlignment="center"
                         android:textColor="@color/cinza_texto"

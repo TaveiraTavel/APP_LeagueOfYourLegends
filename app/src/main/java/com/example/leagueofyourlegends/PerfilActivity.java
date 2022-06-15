@@ -44,38 +44,39 @@ public class PerfilActivity extends AppCompatActivity {
         Boolean hotStreak = extras.getBoolean("hotStreak");
         Boolean inactive = extras.getBoolean("inactive");
 
-        String championName = null;
-        String championImage = null;
-        int championLevel;
-        int championPoints;
+        String topChampionsMastery = extras.getString("topChampionsMastery");
+            String championName = null;
+            String championImage = null;
+            int championLevel;
+            int championPoints;
 
         try {
-            JSONArray campeoesJSONArray = new JSONArray(extras.getString("topChampionMastery"));
+            JSONArray campeoesJSONArray = new JSONArray(topChampionsMastery);
             for (int i = 0; i <= 2; i++){
                 JSONObject campeaoJSONObject = new JSONObject(campeoesJSONArray.getString(i));
-                championName = campeaoJSONObject.getString("championName");
-                championImage = campeaoJSONObject.getString("championImage");
-                championLevel = campeaoJSONObject.getInt("championLevel");
-                championPoints = campeaoJSONObject.getInt("championPoints");
+                    championName = campeaoJSONObject.getString("championName");
+                    championImage = campeaoJSONObject.getString("championImage");
+                    championLevel = campeaoJSONObject.getInt("championLevel");
+                    championPoints = campeaoJSONObject.getInt("championPoints");
 
                 // Colocando o nome do campeão na View
-                TextView textChampion = (TextView) findViewById(getResources().getIdentifier("textChampion" + i+1, "id", getPackageName()));
+                TextView textChampion = (TextView) findViewById(getResources().getIdentifier("textChampion" + (i + 1), "id", getPackageName()));
                 textChampion.setText(championName);
                 textChampion.setContentDescription(championName);
 
                 // Colocando q imagem do campeão na View
-                ImageView imgChampion = (ImageView) findViewById(getResources().getIdentifier("imgChampion" + i+1, "id", getPackageName()));
+                ImageView imgChampion = (ImageView) findViewById(getResources().getIdentifier("imgChampion" + (i + 1), "id", getPackageName()));
                 String imageChampURL = "https://ddragon.leagueoflegends.com/cdn/12.11.1/img/champion/" + championImage + ".png";
                 Picasso.get().load(imageChampURL).into(imgChampion);
 
                 // Colocando a maestria do campeão na View
-                ImageView imgMaestria = (ImageView) findViewById(getResources().getIdentifier("imgMaestria" + i+1, "id", getPackageName()));
+                ImageView imgMaestria = (ImageView) findViewById(getResources().getIdentifier("imgMaestria" + (i + 1), "id", getPackageName()));
                 imgMaestria.setBackgroundResource(getResources().getIdentifier("master" + championLevel, "drawable", getPackageName()));
 
                 // Colocando os pontos de maestria na View
-                TextView textPoints = (TextView) findViewById(getResources().getIdentifier("textPoints" + i+1, "id", getPackageName()));
-                textChampion.setText(championPoints);
-                textChampion.setContentDescription("Pontos:" + championPoints);
+                TextView textPoints = (TextView) findViewById(getResources().getIdentifier("textPoints" + (i + 1), "id", getPackageName()));
+                textPoints.setText(String.format(Locale.US, "%,d", championPoints).replace(',', '.'));
+                textPoints.setContentDescription("Pontos: " + championPoints);
             }
         } catch (JSONException e) {
             e.printStackTrace();

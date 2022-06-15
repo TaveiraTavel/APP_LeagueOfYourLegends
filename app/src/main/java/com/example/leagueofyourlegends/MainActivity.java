@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         // atualiza a textview para informar que não há conexão ou termo de busca
         else {
             if (queryNickname.length() == 0) {
-                Toast.makeText(getApplicationContext(), "Informe um nickname", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "⚠  Informe um nickname", Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Verifique sua conexão!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "⚠  Verifique sua conexão!", Toast.LENGTH_SHORT).show();
            }
         }
     }
@@ -127,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Boolean hotStreak = null;
             Boolean inactive = null;
 
+            String topChampionsMastery = null;
+
             // Procurando pelos itens
             try {
                 summonerNickname = jsonObject.getString("nickname");
@@ -141,6 +143,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 losses = jsonObject.getInt("losses");
                 hotStreak = jsonObject.getBoolean("hotStreak");
                 inactive = jsonObject.getBoolean("inactive");
+
+                topChampionsMastery = jsonObject.getString("topChampionsMastery");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -157,7 +161,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 wins != null &&
                 losses != null &&
                 hotStreak != null &&
-                inactive != null){
+                inactive != null &&
+
+                topChampionsMastery != null){
                 // Abrir próxima activity
                 abrirPerfilActivity(summonerNickname,
                                     encryptedSummonerId,
@@ -169,7 +175,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                                     wins,
                                     losses,
                                     hotStreak,
-                                    inactive);
+                                    inactive,
+                                    topChampionsMastery);
 
                 // Destruir loader para fazer próxima busca
                 getSupportLoaderManager().destroyLoader(0);
@@ -177,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         } catch (Exception e) {
             // Se não receber um JSON válido, informa ao usuário
-            Toast.makeText(getApplicationContext(), "Não encontramos esse invocador :/", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Não encontramos nada sobre esse invocador :/", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
 
@@ -200,7 +207,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                                     int wins,
                                     int losses,
                                     Boolean hotStreak,
-                                    Boolean inactive) {
+                                    Boolean inactive,
+
+                                    String topChampionsMastery) {
 
         // Intent explícita
         Intent intent = new Intent(this, PerfilActivity.class);
@@ -217,6 +226,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         intent.putExtra("losses", losses);
         intent.putExtra("hotStreak", hotStreak);
         intent.putExtra("inactive", inactive);
+
+        intent.putExtra("topChampionsMastery", topChampionsMastery);
         startActivity(intent);
         this.overridePendingTransition(0, 0);
     }
