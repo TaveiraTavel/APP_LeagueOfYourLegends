@@ -70,13 +70,14 @@
 
     <Spinner
         android:id="@+id/spinRegiao"
-        android:layout_width="115dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:background="@android:drawable/btn_dropdown"
+        android:background="@drawable/spinner_style"
         android:spinnerMode="dropdown"
 
         app:layout_constraintStart_toStartOf="@+id/edtNickname"
         app:layout_constraintTop_toBottomOf="@id/edtNickname"
+        android:layout_marginStart="4dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
@@ -93,7 +94,8 @@
 
         app:layout_constraintEnd_toEndOf="@+id/edtNickname"
         app:layout_constraintStart_toStartOf="@+id/edtNickname"
-        app:layout_constraintTop_toBottomOf="@id/spinRegiao" />
+        app:layout_constraintTop_toBottomOf="@id/spinRegiao"
+        android:layout_marginTop="5dp" />
 
     <TextView
         android:id="@+id/textAppVersion"
@@ -104,7 +106,7 @@
         android:letterSpacing=".1"
         android:text="v12.11.1"
         android:textColor="@color/branco"
-        android:textSize="18sp"
+        android:textSize="16sp"
 
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="12dp"

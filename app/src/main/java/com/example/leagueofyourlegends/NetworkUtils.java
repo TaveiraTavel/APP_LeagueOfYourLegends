@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String API_KEY = "RGAPI-c52ad5ef-5943-4b18-83de-a00d4b813210";
+    private static final String API_KEY = "RGAPI-7bc5b41b-114e-4365-be4e-28d7477fbd14";
 
     static String buscaInvocador(String regiao, String nickname){
         String SummonerJSONString = null;

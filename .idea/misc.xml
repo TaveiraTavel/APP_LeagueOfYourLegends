@@ -18,14 +18,17 @@
         <entry key="..\:/Users/letic/OneDrive/Documentos/Android/LeagueOfYourLegends/app/src/main/res/layout/app_widget.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable-v21/app_widget_background.xml" value="0.196" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable-v21/app_widget_inner_view_background.xml" value="0.196" />
+        <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/spinner_style.xml" value="0.2735" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/style.xml" value="0.196" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/topbar_icon.xml" value="0.33" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/topbar_icon_line.xml" value="0.1965" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/drawable/topbar_line.xml" value="0.226" />
-        <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/activity_main.xml" value="0.2753623188405797" />
+        <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/activity_main.xml" value="0.3434823977164605" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/activity_perfil.xml" value="0.33" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/app_widget.xml" value="0.33" />
         <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/layout_topbar.xml" value="0.5" />
+        <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/spinner_drop_layout.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/mateu/AndroidStudioPojects/LeagueOfYourLegends/app/src/main/res/layout/spinner_layout.xml" value="0.11851851851851852" />
       </map>
     </option>
   </component>

@@ -43,20 +43,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         if (getSupportLoaderManager().getLoader(0) != null) {
             getSupportLoaderManager().initLoader(0, null, this);
         }
+        // Acessando a tela
+        edtNickname = (EditText) findViewById(R.id.edtNickname);
+        spinRegiao = (Spinner) findViewById(R.id.spinRegiao);
 
         // Banco de Dados
         mydb = new DatabaseHelper(this);
 
-        spinner = (Spinner) findViewById(R.id.spinRegiao);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_spinner_item, mydb.getRegioes());
+                R.layout.spinner_layout, mydb.getRegioes());
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        adapter.setDropDownViewResource(R.layout.spinner_drop_layout);
+        spinRegiao.setAdapter(adapter);
 
-        // Acessando a tela
-        edtNickname = (EditText) findViewById(R.id.edtNickname);
-        spinRegiao = (Spinner) findViewById(R.id.spinRegiao);
     }
 
     // Botão Entrar
