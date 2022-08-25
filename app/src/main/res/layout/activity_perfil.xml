@@ -445,7 +445,7 @@
                             android:scaleType="centerCrop"
                             android:scrollX="5dp"
                             android:scrollY="5dp"
-                            android:src="@drawable/applogo" />
+                            android:src="" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -520,7 +520,7 @@
                             android:layout_centerInParent="true"
                             android:scrollX="5dp"
                             android:scrollY="5dp"
-                            android:src="@drawable/applogo" />
+                            android:src="" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -594,7 +594,7 @@
                             android:layout_centerInParent="true"
                             android:scrollX="5dp"
                             android:scrollY="5dp"
-                            android:src="@drawable/applogo" />
+                            android:src="" />
 
                     </androidx.cardview.widget.CardView>
 

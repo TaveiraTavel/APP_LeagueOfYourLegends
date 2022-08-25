@@ -7,50 +7,51 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:id="@+id/linearCabecalho"
             android:layout_width="fill_parent"
             android:layout_height="80dp"
             android:background="@color/preto_principal"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/textRegiao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="20dp"
                 android:layout_weight="20"
                 android:contentDescription=""
-                android:text=""
                 android:fontFamily="@font/alata"
                 android:letterSpacing=".1"
+                android:text=""
                 android:textAlignment="viewStart"
-                android:textColor="@color/branco"
-                android:textSize="12sp"
 
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="32dp"/>
+                android:textColor="@color/branco"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/textSetinha"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="22dp"
                 android:layout_weight="1"
                 android:contentDescription=""
-                android:text="@string/setinha"
                 android:fontFamily="@font/alata"
                 android:letterSpacing=".1"
-                android:textAlignment="viewEnd"
-                android:textColor="@color/branco"
-                android:textSize="22sp"
+                android:onClick="voltarBuscaActivity"
                 android:paddingEnd="14dp"
                 android:paddingBottom="10dp"
-                android:onClick="voltarBuscaActivity"
+                android:text="@string/setinha"
+                android:textAlignment="viewEnd"
 
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="22dp"/>
+                android:textColor="@color/branco"
+                android:textSize="22sp" />
 
 
         </LinearLayout>
@@ -100,7 +101,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/applogo"/>
+                        android:src=""/>
 
                 </androidx.cardview.widget.CardView>
 
