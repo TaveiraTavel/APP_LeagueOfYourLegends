@@ -26,23 +26,199 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="6dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="85dp"
-            android:layout_height="85dp"
-            app:cardCornerRadius="100dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginEnd="0dp"
+            android:orientation="horizontal"
+            android:scrollbars="vertical">
 
-            <ImageView
-                android:id="@+id/imgChampion1"
-                android:layout_width="94dp"
-                android:layout_height="94dp"
-                android:layout_centerInParent="true"
-                android:scrollX="5dp"
-                android:scrollY="5dp"
-                android:src="" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardChampion"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="100dp">
 
+                    <ImageView
+                        android:id="@+id/imgChampion1"
+                        android:layout_width="94dp"
+                        android:layout_height="94dp"
+                        android:layout_centerInParent="true"
+                        android:scrollX="5dp"
+                        android:scrollY="5dp"
+                        android:src="" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/textBuildInicial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cardChampion"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/alegreya_sans_sc"
+                    android:letterSpacing=".1"
+                    android:text="BUILD INICIAL"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/marrom_lines2"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearBuildInicial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textBuildInicial"
+                    android:layout_alignStart="@+id/textBuildInicial"
+
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgInicial1"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgInicial2"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgInicial3"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textBuildGeral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearBuildInicial"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/alegreya_sans_sc"
+                    android:letterSpacing=".1"
+                    android:text="BUID GERAL"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/marrom_lines2"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearBuildGeral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textBuildGeral"
+                    android:layout_alignStart="@+id/textBuildInicial"
+
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgIGeral1"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgIGeral2"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgIGeral3"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgIGeral4"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgIGeral5"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgIGeral6"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textBuildSituacional"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/linearBuildGeral"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/alegreya_sans_sc"
+                    android:letterSpacing=".1"
+                    android:text="BUILD SITUACIONAL"
+                    android:textAlignment="textStart"
+                    android:textColor="@color/marrom_lines2"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:id="@+id/linearBuildSituacional"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textBuildSituacional"
+                    android:layout_alignStart="@+id/textBuildInicial"
+
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgSituacional1"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgSituacional2"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+
+                    <ImageView
+                        android:id="@+id/imgSituacional3"
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="10dp"
+                        android:src="" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </ScrollView>
     </RelativeLayout>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
