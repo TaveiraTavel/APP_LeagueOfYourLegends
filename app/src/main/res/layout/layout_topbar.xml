@@ -100,8 +100,7 @@
                         android:id="@+id/imgInvIcon"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_centerInParent="true"
-                        android:src=""/>
+                        android:layout_centerInParent="true" />
 
                 </androidx.cardview.widget.CardView>
 

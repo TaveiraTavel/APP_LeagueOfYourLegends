@@ -1,518 +1,514 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
-    android:layout_margin="15dp">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/preto_principal"
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="6dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/relativeBorda1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/topbar_line"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
 
         android:layout_marginStart="6dp"
         android:layout_marginTop="6dp">
 
-        <ScrollView
-            android:id="@+id/scrollContainer"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_centerInParent="true"
-            android:orientation="horizontal"
-            android:scrollbars="vertical"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="25dp">
+        <RelativeLayout
+            android:id="@+id/relativeBorda1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <ScrollView
+                android:id="@+id/scrollContainer"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:scrollbars="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cardChampion"
-                    android:layout_width="85dp"
-                    android:layout_height="85dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
-                    app:cardCornerRadius="100dp">
-
-                    <ImageView
-                        android:id="@+id/imgChampion1"
-                        android:layout_width="94dp"
-                        android:layout_height="94dp"
-                        android:layout_centerInParent="true"
-                        android:scrollX="5dp"
-                        android:scrollY="5dp"
-                        android:src="" />
-
-                </androidx.cardview.widget.CardView>
-
-                <LinearLayout
-                    android:id="@+id/linearAreaBuild"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/cardChampion"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardChampion"
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        app:cardCornerRadius="100dp">
+
+                        <ImageView
+                            android:id="@+id/imgChampion1"
+                            android:layout_width="94dp"
+                            android:layout_height="94dp"
+                            android:layout_centerInParent="true"
+                            android:scrollX="5dp"
+                            android:scrollY="5dp" />
+
+                    </androidx.cardview.widget.CardView>
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/marrom_lines2"
-                        android:orientation="horizontal" />
+                        android:id="@+id/linearAreaBuild"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardChampion"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:background="@color/marrom_lines2"
+                            android:orientation="horizontal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:contentDescription=""
+                            android:fontFamily="@font/alegreya_sans_sc"
+                            android:letterSpacing=".15"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="BUILD"
+                            android:textAlignment="center"
+                            android:textColor="@color/cinza_texto"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@color/marrom_lines2"
+                            android:orientation="horizontal" />
+
+                    </LinearLayout>
 
                     <TextView
+                        android:id="@+id/textBuildInicial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linearAreaBuild"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/alegreya_sans_sc"
+                        android:letterSpacing=".1"
+                        android:text="ITENS INICIAIS"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/marrom_lines2"
+                        android:textSize="16sp" />
+
+                    <LinearLayout
+                        android:id="@+id/linearBuildInicial"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:contentDescription=""
-                        android:fontFamily="@font/alegreya_sans_sc"
-                        android:letterSpacing=".15"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
-                        android:text="BUILD"
-                        android:textAlignment="center"
-                        android:textColor="@color/cinza_texto"
-                        android:textSize="20sp" />
+                        android:layout_below="@id/textBuildInicial"
+                        android:layout_alignStart="@+id/textBuildInicial"
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/marrom_lines2"
-                        android:orientation="horizontal" />
+                        android:layout_marginTop="10dp">
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imgInicial1"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp" />
 
-                <TextView
-                    android:id="@+id/textBuildInicial"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/linearAreaBuild"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/alegreya_sans_sc"
-                    android:letterSpacing=".1"
-                    android:text="ITENS INICIAIS"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/marrom_lines2"
-                    android:textSize="16sp" />
+                        <ImageView
+                            android:id="@+id/imgInicial2"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
-                <LinearLayout
-                    android:id="@+id/linearBuildInicial"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textBuildInicial"
-                    android:layout_alignStart="@+id/textBuildInicial"
-
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/imgInicial1"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgInicial2"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgInicial3"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textBuildGeral"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/linearBuildInicial"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/alegreya_sans_sc"
-                    android:letterSpacing=".1"
-                    android:text="BUILD GENÉRICA"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/marrom_lines2"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:id="@+id/linearBuildGeral"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textBuildGeral"
-                    android:layout_alignStart="@+id/textBuildInicial"
-
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/imgIGeral1"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgIGeral2"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgIGeral3"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgIGeral4"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgIGeral5"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgIGeral6"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textBuildSituacional"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/linearBuildGeral"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/alegreya_sans_sc"
-                    android:letterSpacing=".1"
-                    android:text="ITENS SITUACIONAIS"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/marrom_lines2"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:id="@+id/linearBuildSituacional"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textBuildSituacional"
-                    android:layout_alignStart="@+id/textBuildInicial"
-
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/imgSituacional1"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgSituacional2"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgSituacional3"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textSpells"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/linearBuildSituacional"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/alegreya_sans_sc"
-                    android:letterSpacing=".1"
-                    android:text="SPELLS"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/marrom_lines2"
-                    android:textSize="16sp" />
-
-                <LinearLayout
-                    android:id="@+id/linearSpells"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textSpells"
-                    android:layout_alignStart="@+id/textBuildInicial"
-
-                    android:layout_marginTop="10dp">
-
-                    <ImageView
-                        android:id="@+id/imgSpell1"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:src="" />
-
-                    <ImageView
-                        android:id="@+id/imgSpell2"
-                        android:layout_width="46dp"
-                        android:layout_height="46dp"
-                        android:layout_marginStart="10dp"
-                        android:src="" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearAreaRunas"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearSpells"
-                    android:layout_marginTop="20dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/marrom_lines2"
-                        android:orientation="horizontal" />
+                        <ImageView
+                            android:id="@+id/imgInicial3"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:id="@+id/textBuildGeral"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:contentDescription=""
+                        android:layout_below="@id/linearBuildInicial"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
                         android:fontFamily="@font/alegreya_sans_sc"
-                        android:letterSpacing=".15"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="20dp"
-                        android:text="RUNAS"
-                        android:textAlignment="center"
-                        android:textColor="@color/cinza_texto"
-                        android:textSize="20sp" />
+                        android:letterSpacing=".1"
+                        android:text="BUILD GENÉRICA"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/marrom_lines2"
+                        android:textSize="16sp" />
 
                     <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="20dp"
-                        android:layout_weight="1"
-                        android:background="@color/marrom_lines2"
-                        android:orientation="horizontal" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linearRunes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/linearAreaRunas"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
+                        android:id="@+id/linearBuildGeral"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_below="@id/textBuildGeral"
+                        android:layout_alignStart="@+id/textBuildInicial"
 
-                        <RelativeLayout
-                            android:layout_width="120dp"
-                            android:layout_height="120dp"
-                            android:layout_marginTop="12dp">
+                        android:layout_marginTop="10dp">
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                        <ImageView
+                            android:id="@+id/imgIGeral1"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp" />
 
-                                android:layout_margin="6dp"
-                                app:cardCornerRadius="100dp">
+                        <ImageView
+                            android:id="@+id/imgIGeral2"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
-                                <ImageView
-                                    android:id="@+id/imgRune1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="" />
+                        <ImageView
+                            android:id="@+id/imgIGeral3"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
-                            </androidx.cardview.widget.CardView>
+                        <ImageView
+                            android:id="@+id/imgIGeral4"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
-                        </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/imgIGeral5"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="12dp">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-
-                                android:layout_margin="6dp"
-                                app:cardCornerRadius="100dp">
-
-                                <ImageView
-                                    android:id="@+id/imgRune2"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="" />
-
-                            </androidx.cardview.widget.CardView>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="12dp">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-
-                                android:layout_margin="6dp"
-                                app:cardCornerRadius="100dp">
-
-                                <ImageView
-                                    android:id="@+id/imgRune3"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="" />
-
-                            </androidx.cardview.widget.CardView>
-
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="12dp">
-
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-
-                                android:layout_margin="6dp"
-                                app:cardCornerRadius="100dp">
-
-                                <ImageView
-                                    android:id="@+id/imgRune4"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="" />
-
-                            </androidx.cardview.widget.CardView>
-
-                        </RelativeLayout>
-
+                        <ImageView
+                            android:id="@+id/imgIGeral6"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="50dp"
-                        android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/textBuildSituacional"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linearBuildGeral"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/alegreya_sans_sc"
+                        android:letterSpacing=".1"
+                        android:text="ITENS SITUACIONAIS"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/marrom_lines2"
+                        android:textSize="16sp" />
 
-                    </LinearLayout>
-
                     <LinearLayout
+                        android:id="@+id/linearBuildSituacional"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_below="@id/textBuildSituacional"
+                        android:layout_alignStart="@+id/textBuildInicial"
 
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="12dp">
+                        android:layout_marginTop="10dp">
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                        <ImageView
+                            android:id="@+id/imgSituacional1"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp" />
 
-                                android:layout_margin="6dp"
-                                app:cardCornerRadius="100dp">
+                        <ImageView
+                            android:id="@+id/imgSituacional2"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
-                                <ImageView
-                                    android:id="@+id/imgRune5"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="" />
+                        <ImageView
+                            android:id="@+id/imgSituacional3"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
+                    </LinearLayout>
 
-                            </androidx.cardview.widget.CardView>
+                    <TextView
+                        android:id="@+id/textSpells"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/linearBuildSituacional"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/alegreya_sans_sc"
+                        android:letterSpacing=".1"
+                        android:text="SPELLS"
+                        android:textAlignment="textStart"
+                        android:textColor="@color/marrom_lines2"
+                        android:textSize="16sp" />
 
-                        </RelativeLayout>
+                    <LinearLayout
+                        android:id="@+id/linearSpells"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textSpells"
+                        android:layout_alignStart="@+id/textBuildInicial"
 
-                        <RelativeLayout
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:layout_marginTop="12dp">
+                        android:layout_marginTop="10dp">
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                        <ImageView
+                            android:id="@+id/imgSpell1"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp" />
 
-                                android:layout_margin="6dp"
-                                app:cardCornerRadius="100dp">
-
-                                <ImageView
-                                    android:id="@+id/imgRune6"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerInParent="true"
-                                    android:src="" />
-
-                            </androidx.cardview.widget.CardView>
-
-                        </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/imgSpell2"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="10dp" />
 
                     </LinearLayout>
 
-                </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/linearAreaRunas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linearSpells"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
 
-            </RelativeLayout>
-        </ScrollView>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_weight="1"
+                            android:background="@color/marrom_lines2"
+                            android:orientation="horizontal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:contentDescription=""
+                            android:fontFamily="@font/alegreya_sans_sc"
+                            android:letterSpacing=".15"
+                            android:paddingStart="20dp"
+                            android:paddingEnd="20dp"
+                            android:text="RUNAS"
+                            android:textAlignment="center"
+                            android:textColor="@color/cinza_texto"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="20dp"
+                            android:layout_weight="1"
+                            android:background="@color/marrom_lines2"
+                            android:orientation="horizontal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearRunes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/linearAreaRunas"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="120dp"
+                                android:layout_height="120dp"
+                                android:layout_marginTop="12dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="100dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgRune1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="12dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="100dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgRune2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="12dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="100dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgRune3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="12dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="100dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgRune4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content">
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <RelativeLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="12dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="100dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgRune5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_marginTop="12dp">
+
+                                <androidx.cardview.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+
+                                    android:layout_margin="6dp"
+                                    app:cardCornerRadius="100dp">
+
+                                    <ImageView
+                                        android:id="@+id/imgRune6"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_centerInParent="true" />
+
+                                </androidx.cardview.widget.CardView>
+
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </ScrollView>
+        </RelativeLayout>
+
     </RelativeLayout>
 
 
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

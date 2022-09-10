@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -42,6 +43,9 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class PerfilActivity extends AppCompatActivity {
     private int EXTERNAL_STORAGE_PERMISSION_CODE = 23;
+
+    private AlertDialog.Builder alertDialogBuilder;
+    private AlertDialog alertDialog;
 
     String imageIconURL;
     ImageView imgInvIcon;
@@ -249,5 +253,17 @@ public class PerfilActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Icone já salvo no dispositivo.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void createNewContatDialog(View view) {
+        alertDialogBuilder = new AlertDialog.Builder(this, R.style.CustomDialog);
+        final View championPopupView = getLayoutInflater().inflate(R.layout.popup_campeao, null);
+
+        alertDialogBuilder.setView(championPopupView);
+        alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+        int screenWidth = Resources.getSystem().getDisplayMetrics().widthPixels - 160;
+        int screenHeight = Resources.getSystem().getDisplayMetrics().heightPixels - 180;
+        alertDialog.getWindow().setLayout(screenWidth,screenHeight);
     }
 }

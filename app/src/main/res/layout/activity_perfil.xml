@@ -444,8 +444,7 @@
                             android:layout_centerInParent="true"
                             android:scaleType="centerCrop"
                             android:scrollX="5dp"
-                            android:scrollY="5dp"
-                            android:src="" />
+                            android:scrollY="5dp" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -511,7 +510,8 @@
                         android:layout_width="85dp"
                         android:layout_height="85dp"
                         android:layout_marginBottom="2dp"
-                        app:cardCornerRadius="100dp">
+                        app:cardCornerRadius="100dp"
+                        android:onClick="createNewContatDialog">
 
                         <ImageView
                             android:id="@+id/imgChampion1"
@@ -519,8 +519,7 @@
                             android:layout_height="94dp"
                             android:layout_centerInParent="true"
                             android:scrollX="5dp"
-                            android:scrollY="5dp"
-                            android:src="" />
+                            android:scrollY="5dp" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -593,8 +592,7 @@
                             android:layout_height="94dp"
                             android:layout_centerInParent="true"
                             android:scrollX="5dp"
-                            android:scrollY="5dp"
-                            android:src="" />
+                            android:scrollY="5dp" />
 
                     </androidx.cardview.widget.CardView>
 
