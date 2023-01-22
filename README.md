@@ -50,6 +50,6 @@ Este projeto está sob a licença Apache 2.0 - veja o arquivo [LICENSE.md](https
 
 ## 🎁 Agradecimentos
 
-* Ao **Erin Rodrigues**, que me ajudou com toda a documentação e ideia inicial. - [GitHub.com](https://github.com/DudeBatista)
-* À **Leticia Resina**, que colaborou com novas ideias e implementou o Widget. - [GitHub.com](https://github.com/LetyResina)
-* À **Aline F. Brito**, que coordenou todo o projeto como professora instrutora. - [GitHub.com](https://github.com/alinefbrito)
+* Ao [Erin Rodrigues](https://github.com/DudeBatista), que me ajudou com toda a documentação e ideia inicial;
+* À [Leticia Resina](https://github.com/LetyResina), que colaborou com novas ideias e implementou o Widget;
+* À [Aline F. Brito](https://github.com/alinefbrito), que coordenou todo o projeto como professora instrutora.
