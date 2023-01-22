@@ -21,9 +21,8 @@ import java.util.Iterator;
 
 public class NetworkUtils {
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
-    private static final String API_KEY = "RGAPI-1e0b5c8b-138b-44c8-81bf-09fbc096d742";
 
-    static String buscaInvocador(String regiao, String nickname){
+    static String buscaInvocador(String regiao, String nickname, String API_Key){
         String SummonerJSONString = null;
         String LeagueJSONString = null;
         String ChampionMasteryJSONString = null;
@@ -35,7 +34,7 @@ public class NetworkUtils {
 
         try {
             // Busca no EndPoint Summoner
-            SummonerJSONString = getSummonerJSONString(apiDomain, nickname);
+            SummonerJSONString = getSummonerJSONString(apiDomain, nickname, API_Key);
             if (SummonerJSONString == null){
                 return null;
             }
@@ -58,7 +57,7 @@ public class NetworkUtils {
             }
 
             // Busca no EndPoint League
-            LeagueJSONString = getLeagueJSONString(apiDomain, encryptedSummonerId);
+            LeagueJSONString = getLeagueJSONString(apiDomain, encryptedSummonerId, API_Key);
             JSONArray LeagueJSONArray = new JSONArray(LeagueJSONString);
 
             // Inicializar contador e itens a serem buscados
@@ -89,7 +88,7 @@ public class NetworkUtils {
             }
 
             // Busca no EndPoint Champion Mastery
-            ChampionMasteryJSONString = getChampionMasteryJSONString(apiDomain, encryptedSummonerId);
+            ChampionMasteryJSONString = getChampionMasteryJSONString(apiDomain, encryptedSummonerId, API_Key);
             JSONArray ChampionMasteryJSONArray = new JSONArray(ChampionMasteryJSONString);
             JSONArray topChampionMasteryJSONArray = new JSONArray();
 
@@ -165,7 +164,7 @@ public class NetworkUtils {
         return PerfilJSONString;
     }
 
-    static String getSummonerJSONString(String apiDomain, String nickname){
+    static String getSummonerJSONString(String apiDomain, String nickname, String API_Key){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String JSONString = null;
@@ -181,7 +180,7 @@ public class NetworkUtils {
                     .appendPath("summoners")
                     .appendPath("by-name")
                     .appendPath( nickname )
-                    .appendQueryParameter("api_key", API_KEY)
+                    .appendQueryParameter("api_key", API_Key)
                     .build();
 
             // Converte a URI para a URL.
@@ -243,7 +242,7 @@ public class NetworkUtils {
         return JSONString;
     }
 
-    static String getLeagueJSONString(String apiDomain, String leagueID){
+    static String getLeagueJSONString(String apiDomain, String leagueID, String API_Key){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String JSONString = null;
@@ -259,7 +258,7 @@ public class NetworkUtils {
                     .appendPath("entries")
                     .appendPath("by-summoner")
                     .appendPath( leagueID )
-                    .appendQueryParameter("api_key", API_KEY)
+                    .appendQueryParameter("api_key", API_Key)
                     .build();
 
             // Converte a URI para a URL.
@@ -321,7 +320,7 @@ public class NetworkUtils {
         return JSONString;
     }
 
-    static String getChampionMasteryJSONString(String apiDomain, String leagueID){
+    static String getChampionMasteryJSONString(String apiDomain, String leagueID, String API_Key){
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String JSONString = null;
@@ -337,7 +336,7 @@ public class NetworkUtils {
                     .appendPath("champion-masteries")
                     .appendPath("by-summoner")
                     .appendPath( leagueID )
-                    .appendQueryParameter("api_key", API_KEY)
+                    .appendQueryParameter("api_key", API_Key)
                     .build();
 
             // Converte a URI para a URL.

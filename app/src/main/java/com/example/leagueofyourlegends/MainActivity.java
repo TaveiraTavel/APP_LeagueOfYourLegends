@@ -2,11 +2,13 @@ package com.example.leagueofyourlegends;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -34,6 +36,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     Spinner spinRegiao;
     String queryNickname;
     String queryRegiao;
+    String queryAPI_KEY;
+    EditText edtAPI_KEY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +60,27 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         adapter.setDropDownViewResource(R.layout.spinner_drop_layout);
         spinRegiao.setAdapter(adapter);
 
+        edtAPI_KEY = new EditText(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                            builder.setTitle("Riot API_KEY");
+                            builder.setCancelable(false);
+                            builder.setIcon(R.drawable.applogo);
+                            builder.setMessage("Insira a chave da API RiotGames para continuar:");
+                            builder.setView(edtAPI_KEY);
+                            builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    queryAPI_KEY = edtAPI_KEY.getText().toString();
+                                    Toast.makeText(getApplicationContext(), "Caso não esteja encontrando contas, provavelmente sua API_KEY está incorreta.", Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+        AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
     }
 
     // Botão Entrar
     public void buscarInvocador(View view) {
-
-
         // Verifica o status da conexão de rede
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -81,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             Bundle queryBundle = new Bundle();
             queryBundle.putString("queryRegiao", queryRegiao);
             queryBundle.putString("queryNickname", queryNickname);
+            queryBundle.putString("queryAPI_KEY", queryAPI_KEY);
             getSupportLoaderManager().restartLoader(0, queryBundle, this);
             Toast.makeText(getApplicationContext(), "Procurando pelo invocador...", Toast.LENGTH_SHORT).show();
         }
@@ -99,11 +119,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<String> onCreateLoader(int id, @Nullable Bundle args) {
         String queryRegiao = "";
         String queryNickname = "";
+        String queryAPI_KEY = "";
         if (args != null) {
             queryRegiao = args.getString("queryRegiao");
             queryNickname = args.getString("queryNickname");
+            queryAPI_KEY = args.getString("queryAPI_KEY");
         }
-        return new CarregaInvocador(this, queryRegiao, queryNickname);
+        return new CarregaInvocador(this, queryRegiao, queryNickname, queryAPI_KEY);
     }
 
     @Override

@@ -9,10 +9,12 @@ import androidx.loader.content.AsyncTaskLoader;
 public class CarregaInvocador extends AsyncTaskLoader<String> {
     private String queryRegiao;
     private String queryInvocador;
-    public CarregaInvocador(Context context, String REGIAO, String NICKNAME) {
+    private String queryAPI_KEY;
+    public CarregaInvocador(Context context, String REGIAO, String NICKNAME, String API_KEY) {
         super(context);
         queryRegiao = REGIAO;
         queryInvocador = NICKNAME;
+        queryAPI_KEY = API_KEY;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class CarregaInvocador extends AsyncTaskLoader<String> {
     @Nullable
     @Override
     public String loadInBackground() {
-        return NetworkUtils.buscaInvocador(queryRegiao, queryInvocador);
+        return NetworkUtils.buscaInvocador(queryRegiao, queryInvocador, queryAPI_KEY);
     }
 }
 
