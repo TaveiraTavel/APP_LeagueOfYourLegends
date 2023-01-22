@@ -1,6 +1,6 @@
-# LeagueOfYourLegends
+# LEAGUE OF YOUR LEGENDS
 
-O LeagueOfYourLegends é um aplicativo destinado a jogadores do MOBA League Of Legends, o qual permite a visualização limpa, rápida e precisa de todos os dados de sua conta.
+O LEAGUE OF YOUR LEGENDS é um aplicativo destinado a jogadores do MOBA League Of Legends, o qual permite a visualização limpa, rápida e precisa de todos os dados de sua conta.
 
 Esse projeto foi desenvolvido durante realização do meu curso técnico na ETEC Profª Basilides de Godoy de Desenvolvimento de Sistemas.
 
