@@ -4,6 +4,10 @@ O LEAGUE OF YOUR LEGENDS é um aplicativo destinado a jogadores do MOBA League O
 
 Esse projeto foi desenvolvido durante realização do meu curso técnico na ETEC Profª Basilides de Godoy de Desenvolvimento de Sistemas.
 
+## 🎥 Demonstração
+
+https://user-images.githubusercontent.com/62896500/215913439-51da8917-dad0-436d-86f9-e2654fc8492f.mp4
+
 ## 🚀 Começando
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
